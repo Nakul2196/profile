@@ -7,9 +7,9 @@ import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Calendar } from "@/components/ui/calendar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { CalendarIcon, User, Edit } from "lucide-react"
-import { format,differenceInYears} from "date-fns"
-import { useState,useEffect } from "react"
+import { CalendarIcon } from "lucide-react"
+import { format, differenceInYears } from "date-fns"
+import { useState, useEffect } from "react"
 
 export default function Component() {
   const [date, setDate] = useState<Date | undefined>()
@@ -23,54 +23,52 @@ export default function Component() {
   }, [date])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 p-6 lg:p-12">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 p-2 sm:p-4 md:p-6 lg:p-12">
       <div className="w-full max-w-6xl mx-auto">
         <Card className="shadow-lg border-0 bg-white/90 backdrop-blur-sm overflow-hidden">
           <CardHeader className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white pb-8 pt-10">
-            <div className="flex justify-between items-center">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
               <div>
-                <CardTitle className="text-3xl font-bold">Personal Profile</CardTitle>
-                <p className="text-blue-100 mt-2 text-lg">Manage your personal information</p>
+                <CardTitle className="text-2xl sm:text-3xl font-bold">Personal Profile</CardTitle>
+                <p className="text-blue-100 mt-2 text-base sm:text-lg">Manage your personal information</p>
               </div>
             </div>
           </CardHeader>
 
-          <CardContent className="p-10 space-y-8">
-              <div className="flex gap-11 items-start">
-                    <div className="flex-shrink-0">
-                      <img
-                         src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg"
-                        alt="Profile"
-                        className="w-28 h-28 rounded-full object-cover border-4 border-white shadow-md"
-                       />
-                  <div className="mt-4 text-center">
+          <CardContent className="p-4 sm:p-6 md:p-10 space-y-8">
+            <div className="flex flex-col md:flex-row gap-6 md:gap-11 items-start">
+              <div className="flex-shrink-0 flex justify-center w-full md:w-auto">
+                <img
+                  src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg"
+                  alt="Profile"
+                  className="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover border-4 border-white shadow-md"
+                />
               </div>
-            </div>
 
-              <div className="flex-1 space-y-8">
+              <div className="flex-1 w-full space-y-8">
                 <div className="space-y-6">
-                  <h3 className="text-lg font-semibold text-gray-800 border-b border-gray-200 pb-2">
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-800 border-b border-gray-200 pb-2">
                     Personal Information
                   </h3>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-                    <div className="space-y-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                    <div className="space-y-2 w-full">
                       <Label htmlFor="name" className="text-sm font-medium text-gray-700">
                         Full Name
                       </Label>
                       <Input
                         id="name"
                         placeholder="Enter your full name"
-                        className="rounded-lg border-gray-200 focus:border-blue-500 focus:ring-blue-500/20 shadow-sm transition-all duration-200"
+                        className="w-full rounded-lg border-gray-200 focus:border-blue-500 focus:ring-blue-500/20 shadow-sm transition-all duration-200"
                       />
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="space-y-2 w-full">
                       <Label htmlFor="gender" className="text-sm font-medium text-gray-700">
                         Gender
                       </Label>
                       <Select>
-                        <SelectTrigger className="rounded-lg border-gray-200 focus:border-blue-500 focus:ring-blue-500/20 shadow-sm">
+                        <SelectTrigger className="w-full rounded-lg border-gray-200 focus:border-blue-500 focus:ring-blue-500/20 shadow-sm">
                           <SelectValue placeholder="Select gender" />
                         </SelectTrigger>
                         <SelectContent>
@@ -81,7 +79,7 @@ export default function Component() {
                       </Select>
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="space-y-2 w-full">
                       <Label htmlFor="dob" className="text-sm font-medium text-gray-700">
                         Date of Birth
                       </Label>
@@ -101,7 +99,7 @@ export default function Component() {
                       </Popover>
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="space-y-2 w-full">
                       <Label htmlFor="age" className="text-sm font-medium text-gray-700">
                         Age
                       </Label>
@@ -113,19 +111,19 @@ export default function Component() {
                         readOnly
                         onChange={(e) => setAge(Number(e.target.value))}
                         disabled
-                        className="rounded-lg border-gray-200 bg-gray-50/50 text-gray-500 shadow-sm"
+                        className="w-full rounded-lg border-gray-200 bg-gray-50/50 text-gray-500 shadow-sm"
                       />
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-6">
-                  <h3 className="text-lg font-semibold text-gray-800 border-b border-gray-200 pb-2">
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-800 border-b border-gray-200 pb-2">
                     Contact Information
                   </h3>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <div className="space-y-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                    <div className="space-y-2 w-full">
                       <Label htmlFor="primary-no" className="text-sm font-medium text-gray-700">
                         Primary Number
                       </Label>
@@ -133,11 +131,11 @@ export default function Component() {
                         id="primary-no"
                         placeholder="Enter primary number"
                         type="tel"
-                        className="rounded-lg border-gray-200 focus:border-blue-500 focus:ring-blue-500/20 shadow-sm transition-all duration-200"
+                        className="w-full rounded-lg border-gray-200 focus:border-blue-500 focus:ring-blue-500/20 shadow-sm transition-all duration-200"
                       />
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="space-y-2 w-full">
                       <Label htmlFor="secondary-no" className="text-sm font-medium text-gray-700">
                         Secondary Number
                       </Label>
@@ -145,11 +143,11 @@ export default function Component() {
                         id="secondary-no"
                         placeholder="Enter secondary number"
                         type="tel"
-                        className="rounded-lg border-gray-200 focus:border-blue-500 focus:ring-blue-500/20 shadow-sm transition-all duration-200"
+                        className="w-full rounded-lg border-gray-200 focus:border-blue-500 focus:ring-blue-500/20 shadow-sm transition-all duration-200"
                       />
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="space-y-2 w-full">
                       <Label htmlFor="whatsapp" className="text-sm font-medium text-gray-700">
                         WhatsApp Number
                       </Label>
@@ -157,13 +155,13 @@ export default function Component() {
                         id="whatsapp"
                         placeholder="Enter WhatsApp number"
                         type="tel"
-                        className="rounded-lg border-gray-200 focus:border-blue-500 focus:ring-blue-500/20 shadow-sm transition-all duration-200"
+                        className="w-full rounded-lg border-gray-200 focus:border-blue-500 focus:ring-blue-500/20 shadow-sm transition-all duration-200"
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div className="space-y-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                    <div className="space-y-2 w-full">
                       <Label htmlFor="email" className="text-sm font-medium text-gray-700">
                         Primary Email
                       </Label>
@@ -171,11 +169,11 @@ export default function Component() {
                         id="email"
                         placeholder="Enter your primary email"
                         type="email"
-                        className="rounded-lg border-gray-200 focus:border-blue-500 focus:ring-blue-500/20 shadow-sm transition-all duration-200"
+                        className="w-full rounded-lg border-gray-200 focus:border-blue-500 focus:ring-blue-500/20 shadow-sm transition-all duration-200"
                       />
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="space-y-2 w-full">
                       <Label htmlFor="official-email" className="text-sm font-medium text-gray-700">
                         Official Email
                       </Label>
@@ -183,24 +181,24 @@ export default function Component() {
                         id="official-email"
                         placeholder="Enter your official email"
                         type="email"
-                        className="rounded-lg border-gray-200 focus:border-blue-500 focus:ring-blue-500/20 shadow-sm transition-all duration-200"
+                        className="w-full rounded-lg border-gray-200 focus:border-blue-500 focus:ring-blue-500/20 shadow-sm transition-all duration-200"
                       />
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-6">
-                  <h3 className="text-lg font-semibold text-gray-800 border-b border-gray-200 pb-2">
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-800 border-b border-gray-200 pb-2">
                     Security Information
                   </h3>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div className="space-y-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                    <div className="space-y-2 w-full">
                       <Label htmlFor="security-question" className="text-sm font-medium text-gray-700">
                         Security Question <span className="text-red-500">*</span>
                       </Label>
                       <Select>
-                        <SelectTrigger className="rounded-lg border-gray-200 focus:border-blue-500 focus:ring-blue-500/20 shadow-sm">
+                        <SelectTrigger className="w-full rounded-lg border-gray-200 focus:border-blue-500 focus:ring-blue-500/20 shadow-sm">
                           <SelectValue placeholder="Select a security question" />
                         </SelectTrigger>
                         <SelectContent>
@@ -213,14 +211,14 @@ export default function Component() {
                       </Select>
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="space-y-2 w-full">
                       <Label htmlFor="security-answer" className="text-sm font-medium text-gray-700">
                         Security Answer
                       </Label>
                       <Input
                         id="security-answer"
                         placeholder="Enter your security answer"
-                        className="rounded-lg border-gray-200 focus:border-blue-500 focus:ring-blue-500/20 shadow-sm transition-all duration-200"
+                        className="w-full rounded-lg border-gray-200 focus:border-blue-500 focus:ring-blue-500/20 shadow-sm transition-all duration-200"
                       />
                     </div>
                   </div>
